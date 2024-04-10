@@ -48,6 +48,8 @@ gem "bootsnap", require: false
 gem "sidekiq", '6.5.5'
 gem "redis", '5.0.6'
 
+gem 'devise', '~> 4.9.2'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
