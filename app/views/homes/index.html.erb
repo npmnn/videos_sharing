@@ -1,7 +1,43 @@
 <% if user_signed_in? %>
-  <h3>Welcome Home, <%= current_user.email %></h3>
-  <%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete } %>
+  <p><b>Welcome Video Sharing, <%= current_user.email %></b></p>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+
+  <!-- Add Youtube Video -->
+  <br>
+  <br>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#videoModal">
+    Share Video
+  </button>
+
+  <!-- Show All Videos -->
+  <br>
+  <br>
+  <% Video.all.each do |video| %>
+    <div class="embed-responsive embed-responsive-16by9">
+      <p><b><%= video.title %></b></p>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/#{video.uid}%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <br>
+  <% end %>
 <% else %>
   <h1>Home</h1>
   <%= link_to 'Sign in', new_user_session_path %>
 <% end %>
+
+<!-- Modal Add YouTube Video -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="videoModalLabel">Youtube Video</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model: Video.new, url: videos_path, remote: true) do |form| %>
+          <%= form.text_field :link, placeholder: "Enter YouTube link", class: "form-control" %>
+          <%= form.submit "Add Video", class: "btn btn-primary mt-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
