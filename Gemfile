@@ -50,6 +50,8 @@ gem "redis", '5.0.6'
 
 gem 'devise', '~> 4.9.2'
 
+gem 'yt', '~> 0.32.0'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
