@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <p><b>Welcome Video Sharing, <%= current_user.email %></b></p>
-  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+  <%= link_to("Log out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }) %>
 
   <!-- Add Youtube Video -->
   <br>
