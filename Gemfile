@@ -51,6 +51,7 @@ gem "redis", '5.0.6'
 gem 'devise', '~> 4.9.2'
 
 gem 'yt', '~> 0.32.0'
+gem 'video_info'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

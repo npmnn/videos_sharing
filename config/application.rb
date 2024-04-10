@@ -20,5 +20,9 @@ module VideosSharing
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.autoload_paths += %W(#{config.root}/app/workers)
+
+    config.after_initialize do
+      VideoInfo.provider_api_keys = { youtube: 'AIzaSyDimwvtrDHesJ_jMrwRwT-8yAEavzx4Dmw' }
+    end
   end
 end
