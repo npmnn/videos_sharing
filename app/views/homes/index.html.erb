@@ -1,27 +1,39 @@
 <% if user_signed_in? %>
-  <p><b>Welcome Video Sharing, <%= current_user.email %></b></p>
-  <%= link_to("Log out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }) %>
+  <div style="display: flex; justify-content: center;">
+    <div style="width: 50%; text-align: left;">
+      <p><b>Welcome Video Sharing, <%= current_user.email %></b></p>
+      <%= link_to("Log out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }) %>
+    </div>
+  </div>
 
   <!-- Add Youtube Video -->
   <br>
   <br>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#videoModal">
-    Share Video
-  </button>
+  <div style="margin: auto; width: 50%;">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#videoModal">
+      Share Video
+    </button>
+  </div>
 
   <!-- Show All Videos -->
   <br>
   <br>
-  <% Video.all.each do |video| %>
-    <div class="embed-responsive embed-responsive-16by9">
-      <p><b><%= video.title %></b></p>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/#{video.uid}%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <br>
-  <% end %>
+  <div style="margin: auto; width: 50%;">
+    <% Video.all.each do |video| %>
+      <div class="embed-responsive embed-responsive-16by9">
+        <p><b><%= video.title %></b></p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.uid %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <br>
+    <% end %>
+  </div>
 <% else %>
-  <h1>Home</h1>
-  <%= link_to 'Sign in', new_user_session_path %>
+  <div style="display: flex; justify-content: center;">
+    <div style="width: 50%; text-align: left;">
+      <h1>Videos Sharing</h1>
+      <%= link_to 'Sign in', new_user_session_path %>
+    </div>
+  </div>
 <% end %>
 
 <!-- Modal Add YouTube Video -->

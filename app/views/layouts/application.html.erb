@@ -8,14 +8,15 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-
-    <script src="https://www.google.com/jsapi"></script>
-    <script src="https://www.youtube.com/iframe_api"></script>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div style="display: flex; justify-content: center;">
+    <div style="width: 50%; text-align: left;">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+      </div>
     <%= yield %>
   </body>
 </html>
