@@ -22,6 +22,7 @@ RSpec.describe Video, type: :model do
       end
     end
 
+    context 'invalid' do
       it 'should not allow invalid YouTube links' do
         invalid_links = [
           'https://www.example.com',
@@ -37,4 +38,13 @@ RSpec.describe Video, type: :model do
         end
       end
     end
+  end
+
+  describe 'after_commit callback' do
+    it 'triggers NotificationSenderJob.perform_later' do
+      video = FactoryBot.build(:video)
+      expect(NotificationSenderJob).to receive(:perform_later).with(video)
+      video.save
+    end
+  end
 end
