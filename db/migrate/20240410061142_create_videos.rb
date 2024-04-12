@@ -5,6 +5,7 @@ class CreateVideos < ActiveRecord::Migration[7.0]
 
       t.string :link, null: false
       t.string :uid
+      t.string :author
       t.string :title
       t.datetime :published_at
       t.integer :likes
