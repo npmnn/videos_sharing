@@ -8,6 +8,7 @@ class VideosController < ApplicationController
     @video.uid = video_info.video_id
     @video.link = video_params[:link]
     @video.title = video_info.title
+    @video.author = video_info.author
 
     if video_info.available? && @video.save
       flash[:success] = "Video added successfully"
