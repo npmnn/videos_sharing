@@ -9,7 +9,5 @@ Rails.application.routes.draw do
 
   mount ActionCable .server => '/cable'
 
-  resources :notifications, only: [:update]
-
   mount Sidekiq::Web => '/sidekiq'
 end

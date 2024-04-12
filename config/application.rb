@@ -22,7 +22,7 @@ module VideosSharing
     config.autoload_paths += %W(#{config.root}/app/workers)
 
     config.after_initialize do
-      VideoInfo.provider_api_keys = { youtube: 'AIzaSyDimwvtrDHesJ_jMrwRwT-8yAEavzx4Dmw' }
+      VideoInfo.provider_api_keys = { youtube: 'AIzaSyBDhoJpUaXwKWam1CdwJRcgGuSB2DTIYVY' }
     end
   end
 end

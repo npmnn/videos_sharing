@@ -6,6 +6,23 @@
     </div>
   </div>
 
+  <!-- Show notifications -->
+  <br>
+  <br>
+  <div id="notifications-container" style="margin: auto; width: 50%;">
+    <b>Notifications</b>
+    <% if @notifications.any? %>
+      <ul id="notifications-list">
+        <% @notifications.each do |notification| %>
+          <li style="display: flex; align-items: center;">
+            <%= notification.content %>
+            <%= button_to "x", notification_path(notification), method: :patch, params: { notification: { viewed: true } }, class: "mark-as-viewed" %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
   <!-- Add Youtube Video -->
   <br>
   <br>
@@ -19,7 +36,7 @@
   <br>
   <br>
   <div style="margin: auto; width: 50%;">
-    <% Video.all.each do |video| %>
+    <% Video.all.order(id: :desc).each do |video| %>
       <div class="embed-responsive embed-responsive-16by9">
         <p><b><%= video.title %></b></p>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.uid %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
