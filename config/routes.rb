@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   root 'homes#index'
   get 'homes/index'
@@ -5,4 +6,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :videos, only: [:create]
+
+  mount ActionCable .server => '/cable'
+
+  resources :notifications, only: [:update]
+
+  mount Sidekiq::Web => '/sidekiq'
 end
