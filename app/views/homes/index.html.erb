@@ -6,23 +6,6 @@
     </div>
   </div>
 
-  <!-- Show notifications -->
-  <br>
-  <br>
-  <div id="notifications-container" style="margin: auto; width: 50%;">
-    <b>Notifications</b>
-    <% if @notifications.any? %>
-      <ul id="notifications-list">
-        <% @notifications.each do |notification| %>
-          <li style="display: flex; align-items: center;">
-            <%= notification.content %>
-            <%= button_to "x", notification_path(notification), method: :patch, params: { notification: { viewed: true } }, class: "mark-as-viewed" %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
-
   <!-- Add Youtube Video -->
   <br>
   <br>

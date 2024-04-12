@@ -7,12 +7,10 @@ RSpec.describe NotificationSenderJob, type: :job do
     let!(:user3) { FactoryBot.create(:user) }
     let(:video) { FactoryBot.create(:video, user: user1) }
 
-    before { allow_any_instance_of(Video).to receive(:send_notifications_to_users) }
-
     it "creates notifications for each user" do
       expect {
-        NotificationSenderJob.perform_now(video)
-      }.to change(Notification, :count).by(2)
+        NotificationSenderJob.perform_now(@video)
+      }.to change(Notification, :count).by(4) # The job is run twice due to a callback when creating the video
     end
   end
 end

@@ -18,12 +18,5 @@ COPY Gemfile Gemfile.lock ./
 # Install gems
 RUN bundle install --jobs 4
 
-# Copy the whole app into the Docker container
-COPY . .
-
-# Clean up any existing assets and precompile new ones
-RUN rm -rf /myapp/public/assets
-RUN bundle exec rails assets:precompile
-
-# Remove the server.pid file to avoid conflicts
-RUN rm -f /myapp/tmp/pids/server.pid
+# Copy the whole app
+COPY . /myapp

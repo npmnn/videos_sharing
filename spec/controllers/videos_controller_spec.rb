@@ -5,7 +5,7 @@ RSpec.describe VideosController, type: :controller do
     let(:user) { FactoryBot.create(:user) }
     let(:valid_params) { { video: { link: 'https://www.youtube.com/watch?v=RKvsZiwxVDo' } } }
 
-    let(:video_info) { instance_double('VideoInfo', video_id: 'video_id_test', title: 'video test', available?: true) }
+    let(:video_info) { instance_double('VideoInfo', video_id: 'video_id_test', title: 'video test', author: "xxx", available?: true) }
     before do
       allow(VideoInfo).to receive(:new).and_return(video_info)
     end
